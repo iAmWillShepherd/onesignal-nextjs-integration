@@ -1,15 +1,15 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useEffect } from "react";
-import styles from "../styles/Home.module.css";
+import Head from "next/head"
+import Image from "next/image"
+import { useEffect } from "react"
+import styles from "../styles/Home.module.css"
 
 export default function Home() {
   useEffect(() => {
     OneSignal.push(async () => {
-      const smsId = await OneSignal.getSMSId();
-      console.log("SMS Id", smsId);
-    });
-  }, []);
+      const smsId = await OneSignal.getSMSId()
+      console.log("SMS Id", smsId)
+    })
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -41,5 +41,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  );
+  )
 }
