@@ -25,12 +25,17 @@ const useOneSignal = () =>
                   cancelButton: "Cancel",
                 },
                 delay: {
+                  pageViews: 1,
                   timeDelay: 5,
                 },
               },
             ],
           },
         },
+      });
+
+      isPushNotificationsEnabled(status => {
+        console.log("Push notifications enabled", status);
       });
     });
 
