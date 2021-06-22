@@ -4,7 +4,7 @@ const useOneSignal = () =>
   useEffect(() => {
     window.OneSignal = window.OneSignal || [];
 
-    const { push, init, isPushNotificationsEnabled } = OneSignal;
+    const { push, init, isPushNotificationsEnabled, sendTag } = OneSignal;
 
     push(() => {
       init({
@@ -34,8 +34,12 @@ const useOneSignal = () =>
         },
       });
 
-      isPushNotificationsEnabled(status => {
-        console.log("Push notifications enabled", status);
+      isPushNotificationsEnabled(async isEnabled => {
+        if (!isEnabled) {
+          console.log("Push notifications not enabled, sending tag...");
+
+          const result = await sendTag("subscribed_to_push", "false");
+        }
       });
     });
 
