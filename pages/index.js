@@ -5,8 +5,8 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   useEffect(() => {
-    OneSignal.push(() => {
-      const smsId = OneSignal.getSMSId();
+    OneSignal.push(async () => {
+      const smsId = await OneSignal.getSMSId();
       console.log("SMS Id", smsId);
     });
   }, []);
