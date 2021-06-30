@@ -44,8 +44,23 @@ const useOneSignal = () =>
         if (!isEnabled) {
           console.log("Tagging user as not subscribed to push notifications.")
 
-          // https://documentation.onesignal.com/docs/web-push-sdk#sendtag
-          const result = await sendTag("subscribed_to_push", "false")
+          try {
+            // https://documentation.onesignal.com/docs/web-push-sdk#sendtag
+            await sendTag("subscribed_to_push", "false")
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/sms-fallback`, {
+              method: "POST",
+              body: JSON.stringify({
+                phoneNumbers: ["+18322836519"],
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+          } catch (error) {
+            console.error(error)
+          }
+        } else {
+          await sendTag("subscribed_to_push", "true")
         }
       })
     })
