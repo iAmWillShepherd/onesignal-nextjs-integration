@@ -1,9 +1,18 @@
 import styles from "../styles/Home.module.css"
 import Head from "next/head"
 import useOneSignal from "../utils/useOneSignal"
+import OneSignal from "../utils/oneSignal"
 
 export default function Home() {
   useOneSignal()
 
-  return <main className={styles.main}>Hello</main>
+  return (
+    <>
+      <OneSignal />
+      <Head>
+        <title>OneSignal + Next.js</title>
+      </Head>
+      <main className={styles.main}>Hello</main>
+    </>
+  )
 }
