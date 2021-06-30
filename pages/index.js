@@ -12,7 +12,9 @@ export default function Home() {
       <Head>
         <title>OneSignal + Next.js</title>
       </Head>
-      <main className={styles.main}>Hello</main>
+      <main className={styles.main}>
+        <p>SMS Fallback Demo</p>
+      </main>
     </>
   )
 }
