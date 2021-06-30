@@ -2,9 +2,13 @@ import { useEffect } from "react"
 
 const useOneSignal = () =>
   useEffect(() => {
-    window.OneSignal = window.OneSignal || []
+    const onesignal = window.OneSignal
+    if (!onesignal) {
+      console.warn("OneSignal SDK not loaded.")
+      return
+    }
 
-    const { push, init, isPushNotificationsEnabled, sendTag } = OneSignal
+    const { push, init, isPushNotificationsEnabled, sendTag } = onesignal
 
     push(() => {
       init({
