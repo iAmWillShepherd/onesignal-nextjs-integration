@@ -1,13 +1,9 @@
-import { useEffect } from "react"
 import styles from "../styles/Home.module.css"
+import Head from "next/head"
+import useOneSignal from "../utils/useOneSignal"
 
 export default function Home() {
-  useEffect(() => {
-    OneSignal.push(async () => {
-      const smsId = await OneSignal.getSMSId()
-      console.log("SMS Id", smsId)
-    })
-  }, [])
+  useOneSignal()
 
   return <main className={styles.main}>Hello</main>
 }
