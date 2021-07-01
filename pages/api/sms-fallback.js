@@ -1,3 +1,5 @@
+// https://documentation.onesignal.com/reference/create-notification#sms-content
+
 const axios = require("axios")
 
 const appId = process.env.ONESIGNAL_APP_ID
