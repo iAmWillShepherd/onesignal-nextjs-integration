@@ -60,7 +60,7 @@ const useOneSignal = () =>
             console.error(error)
           }
         } else {
-          await sendTag("subscribed_to_push", "true")
+          await sendTag("subscribed_to_push", "")
         }
       })
     })
