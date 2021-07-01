@@ -1,9 +1,20 @@
-import "../styles/globals.css";
-import useOneSignal from "../utils/useOneSignal";
+import Head from "next/head"
+import "../styles/globals.css"
 
 function MyApp({ Component, pageProps }) {
-  useOneSignal();
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <meta
+          name="description"
+          content="Integrating OneSignal with a Next.js app."
+          key="description"
+        />
+        <link rel="icon" href="/favicon.ico" key="favicon" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  )
 }
 
-export default MyApp;
+export default MyApp
